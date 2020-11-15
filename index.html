@@ -15,12 +15,11 @@
     <link type="text/css" rel="stylesheet" href="./static/fonts/fonts.css"> 
     <link type="text/css" rel="stylesheet" href="./static/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="./static/styles.css">
-
-      <!-- Start Pixtu Snippet -->
-        <script>
-          !function(e,t,n,p,i,a,s,u,c){e[i]||((s=e[i]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)}).queue=[],s.t=1*new Date,(u=t.createElement(n)).async=1,u.src="https://cdn.pixtu.io/app.js?t="+864e5*Math.ceil(new Date/864e5),(c=t.getElementsByTagName(n)[0]).parentNode.insertBefore(u,c))}(window,document,"script",0,"pixtu"),pixtu("init","fb8cc2cd-187d-4835-a397-3cb83798d2e1"),pixtu("event","pageload");
-          </script>
-        <!-- End Pixtu Snippet -->
+    <!-- Start Pixtu Pixel -->
+    <script>
+      !function(e,t,n,p,i,a,s,u,c){e[i]||((s=e[i]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)}).queue=[],s.t=1*new Date,(u=t.createElement(n)).async=1,u.src="https://cdn.pixtu.io/app.js?t="+864e5*Math.ceil(new Date/864e5),(c=t.getElementsByTagName(n)[0]).parentNode.insertBefore(u,c))}(window,document,"script",0,"pixtu"),pixtu("init","fb8cc2cd-187d-4835-a397-3cb83798d2ep"),pixtu("event","pageload");
+      </script>
+      <!-- End Pixtu Pixel -->
   </head>
   <body>
 
@@ -54,7 +53,7 @@
                       </div>
                       <div class="mt-td--centered-vertical user-signup__col-2">
                         <div class="user-signup__form-group m-lg-v form-group text-center">
-                          <button type="submit" class="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
+                          <button id="submit" type="submit" class="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
                         </div>
                       </div>
                     </div>
@@ -96,6 +95,7 @@
 
     <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
+
 <script>
 
 var fired = false;
@@ -216,36 +216,32 @@ var modal = document.getElementById("myModal");
 
       }
 
-var pixtu_prediction = new PixtuPrediction('fb8cc2cd-187d-4835-a397-3cb83798d2e1')
+var pixtu_prediction = new PixtuPrediction('fb8cc2cd-187d-4835-a397-3cb83798d2ep')
 
 pixtu_prediction.getPrediction().then().then(value => {    
   console.log("Pixtu prediction ready:")
     console.log(value)     
     if (value.leaves > value.converts && value.leaves > value.clicks && value.timeInSeconds < 16) {
-      // document.getElementById("predictedAction").innerHTML = "Likely to bounce";
-      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
       document.getElementById("description").innerHTML = "You will bounce without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. WHY DO YOU DO THIS TO US!!!!";
       execPopup(value.timeInSeconds)
     } else if (value.leaves > value.converts && value.leaves > value.clicks) {
-      // document.getElementById("predictedAction").innerHTML = "Not likely to bounce";
-      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
-      document.getElementById("description").innerHTML = "You might leave without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. WHAT'S THE MATTER WITH YOU. WHY CAN'T YOU JUST SUBSCRIBE!";
+      document.getElementById("description").innerHTML = "You might leave without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. PLEASE STAY!";
       execPopup(value.timeInSeconds)
-    } else if (value.converts>value.clicks){
-      // document.getElementById("predictedAction").innerHTML = "Likely to subscribe.";
-      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
-      document.getElementById("description").innerHTML = "You are likely to subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. GIVE THAT EMAIL NOW!"; 
+    } else if (value.clicks>value.converts){
+      document.getElementById("description").innerHTML = "You are likely to subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. GIVE THAT EMAIL NOW PLZZZ!"; 
       execPopup(value.timeInSeconds)
     } else {
-      // document.getElementById("predictedAction").innerHTML = "Very likely to subscribe.";
-      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
-      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. DO IT!";
+      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. DO IT! DO IT! DO IT!!!";
       execPopup(value.timeInSeconds)
     }
 })
  var execPopup = function(time) {
      setTimeout(function() { showPopup(); }, time*1000);
  }
+
+  document.getElementById("submit").addEventListener("click", function() {
+    pixtu("event", "conversion")
+  });
     </script>
       <script src="https://cdn.consolechat.io/console-chat-min.js"></script>
   </body>
