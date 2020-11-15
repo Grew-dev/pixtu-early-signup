@@ -239,7 +239,7 @@ pixtu_prediction.getPrediction().then().then(value => {
     } else {
       // document.getElementById("predictedAction").innerHTML = "Very likely to subscribe.";
       // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
-      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " from entering this page. DO IT!";
+      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. DO IT!";
       execPopup(value.timeInSeconds)
     }
 })
