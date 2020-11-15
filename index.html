@@ -234,7 +234,7 @@ pixtu_prediction.getPrediction().then().then(value => {
     } else if (value.converts>value.clicks){
       // document.getElementById("predictedAction").innerHTML = "Likely to subscribe.";
       // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
-      document.getElementById("description").innerHTML = "You will potentially subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. GIVE THAT EMAIL NOW!"; 
+      document.getElementById("description").innerHTML = "You are likely to subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. GIVE THAT EMAIL NOW!"; 
       execPopup(value.timeInSeconds)
     } else {
       // document.getElementById("predictedAction").innerHTML = "Very likely to subscribe.";
