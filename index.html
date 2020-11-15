@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Pixtu.io - Cookieless Real-Time Lead Conversion Prediction</title>
+    <meta name="description" content="Predict whether your website visitors will buy or bounce." property="description">
+    <meta name="keywords" content="lead, conversion, prediction, personalization, AI, machine learning" property="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1" property="viewport">
+    <meta name="og:title" content="Pixtu.io - Cookieless Real-Time Lead Conversion Prediction" property="og:title">
+    <meta name="og:description" content="Predict whether your website visitors will buy or bounce" property="og:description">
+    <meta name="og:image" content="" property="og:image">
+    <link rel="icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./static/fonts/fonts.css"> 
+    <link type="text/css" rel="stylesheet" href="./static/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./static/styles.css">
+
+      <!-- Start Pixtu Snippet -->
+        <script>
+          !function(e,t,n,p,i,a,s,u,c){e[i]||((s=e[i]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)}).queue=[],s.t=1*new Date,(u=t.createElement(n)).async=1,u.src="https://cdn.pixtu.io/app.js?t="+864e5*Math.ceil(new Date/864e5),(c=t.getElementsByTagName(n)[0]).parentNode.insertBefore(u,c))}(window,document,"script",0,"pixtu"),pixtu("init","fb8cc2cd-187d-4835-a397-3cb83798d2e1"),pixtu("event","pageload");
+          </script>
+        <!-- End Pixtu Snippet -->
+  </head>
+  <body>
+
+        <section>
+          <div class="floating-signup__wrap col-xs-12 col-md-6 col-xs-offset-0 col-md-offset-3 floaty-vertical--middle floaty-horizontal--center floaty-unfloat-at--xs">
+            <div class="floating-signup rel">
+              <div class="container-fluid rel">
+                <div class="row">
+                  <div class="user-signup__intro">
+                    <h1 style="text-align: center;"><small>Pixtu.io</small> <br>Cookieless Real-Time Lead Conversion Prediction</h1>
+                    <p style="text-align: center;">
+                      <img src="/static/spacer.png" alt="" class="spacer insert--image wrap-off-align-center"><br>
+                    </p>
+                    <h2 style="text-align: center;">Predict whether your website visitors will buy or bounce. Optimize your website in real-time.</h2>
+                    <div class="user-signup__form-group m-lg-v form-group text-center">
+                      <button class="btn btn-default user-signup__submit" style="background-color: #999298; font-size: 1.2em; font-weight: bold;" id="myBtn""><span>Check your prediction</span></button>
+                    </div>
+                    <h2 style="text-align: center;">
+                      <img src="/static/clean-hr.png" alt="" class="clean-hr insert--image wrap-off-align-center">
+                      <span style="font-size: 14px;">Enter your email address if you want to get Pixtu updates</span>
+                    </h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <form class="form form-horizontal user-signup__form" name="form" novalidate="" action="https://dev.us7.list-manage.com/subscribe/post?u=c3671b329a67305d5a89d10d2&amp;id=cc4a0fcf4a" method="POST">
+                    <div class="mt-table--full">
+                      <div class="mt-td--centered-vertical user-signup__col-1">
+                        <div class="user-signup__form-group m-lg-v form-group col-sm-12">
+                          <input type="email" name="EMAIL" class="form-control form-control__input user-signup__email" pattern="/^[a-zA-Z0-9+-_]+(\.[_a-zA-Z0-9+]+)*@[a-zA-Z0-9+-_]+(\.[a-zA-Z0-9+-_]+)*(\.[a-zA-Z]+)$/" placeholder="Email" aria-required="true" required="required">
+                        </div>        
+                      </div>
+                      <div class="mt-td--centered-vertical user-signup__col-2">
+                        <div class="user-signup__form-group m-lg-v form-group text-center">
+                          <button type="submit" class="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+  
+ 
+      
+              </div>
+
+            </div>
+            <div class="footer-wrapper">
+              <div>
+              Created by <b><a href="https://grew.dev" target="_blank">Grew</a></b>
+            </div>
+            <div>
+             <a href="https://github.com/Grew-dev/grew-privacy-policy" title="Privacy Policy">Privacy Policy</a>
+             </div>
+          </div>  
+
+          
+          </div>
+
+        </section>
+   <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h2 class="modal-title">Pixtu AI says:</h2>
+        <!-- <p>Action: <span id="predictedAction"></span></p>
+        <p>Time: </p><span id="predictedTime"></span></p> -->
+        <p><span id="description"></span></p>
+      </div>
+
+    </div>     
+
+    <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""/></noscript>
+<script>
+
+var fired = false;
+
+function PixtuPrediction(api_key) {
+    this.api_key = api_key;
+}
+
+PixtuPrediction.prototype = (function(){
+
+    var Browser = {
+        nameAndVersion() {
+            // http://stackoverflow.com/questions/5916900/how-can-you-detect-the-version-of-a-browser
+            var ua= navigator.userAgent, tem,
+            M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+            if (/trident/i.test(M[1])) {
+            tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE '+(tem[1] || '');
+            }
+            if (M[1]=== 'Chrome') {
+            tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            }
+            M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+            if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+            return M.join(' ');
+        },
+
+        isMobile() {
+            return 'ontouchstart' in document;
+        },
+
+        userAgent() {
+            return window.navigator.userAgent;
+        }
+    }
+    // currentKey = this.config.api_key;
+    function getData (key) {
+        
+        var data = {
+                id: key,
+                dl:window.location.href, // document location
+                rl:document.referrer, // referrer location
+                ts:this.timestamp, // timestamp when event was triggered
+                de:document.characterSet, // document encoding
+                sr:window.screen.width + 'x' + window.screen.height, // screen resolution
+                vp:window.innerWidth + 'x' + window.innerHeight, // viewport size
+                cd:window.screen.colorDepth, // color depth
+                dt:document.title, // document title
+                bn:Browser.nameAndVersion(), // browser name and version number
+                md:Browser.isMobile(), // is a mobile device?
+                ua:Browser.userAgent(), // user agent
+                tz:(new Date()).getTimezoneOffset(), // timezone
+                path: window.location.pathname,
+                url: window.location.protocol + '//' + window.location.hostname + window.location.pathname,
+                hostname: window.location.hostname,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                width: window.innerWidth
+                }
+        return data
+    }
+
+    async function getPrediction () {
+        
+        var bodyData = await getData(this.api_key)
+        const response = await fetch('https://pixtu-api.herokuapp.com/prediction', {
+            method: 'POST',
+            body: JSON.stringify(bodyData),
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": 'application/json',
+            },
+        });
+        const result = await response.json();
+        return result
+    }
+
+
+return {
+    getPrediction: getPrediction
+};
+
+})();
+
+// Get the modal
+var modal = document.getElementById("myModal");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        fired = true;
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      var showPopup = function() {
+        if (!fired) {
+          fired = true;
+          modal.style.display = "block";
+        }
+
+      }
+
+var pixtu_prediction = new PixtuPrediction('fb8cc2cd-187d-4835-a397-3cb83798d2e1')
+
+pixtu_prediction.getPrediction().then().then(value => {    
+  console.log("Pixtu prediction ready:")
+    console.log(value)     
+    if (value.leaves > value.converts && value.leaves > value.clicks && value.timeInSeconds < 16) {
+      // document.getElementById("predictedAction").innerHTML = "Likely to bounce";
+      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
+      document.getElementById("description").innerHTML = "You will bounce without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. WHY DO YOU DO THIS TO US!!!!";
+      execPopup(value.timeInSeconds)
+    } else if (value.leaves > value.converts && value.leaves > value.clicks) {
+      // document.getElementById("predictedAction").innerHTML = "Not likely to bounce";
+      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
+      document.getElementById("description").innerHTML = "You might leave without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. WHAT'S THE MATTER WITH YOU. WHY CAN'T YOU JUST SUBSCRIBE!";
+      execPopup(value.timeInSeconds)
+    } else if (value.converts>value.clicks){
+      // document.getElementById("predictedAction").innerHTML = "Likely to subscribe.";
+      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
+      document.getElementById("description").innerHTML = "You will potentially subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. GIVE THAT EMAIL NOW!"; 
+      execPopup(value.timeInSeconds)
+    } else {
+      // document.getElementById("predictedAction").innerHTML = "Very likely to subscribe.";
+      // document.getElementById("predictedTime").innerHTML = value.timeInSeconds + ' seconds';
+      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " from entering this page. DO IT!";
+      execPopup(value.timeInSeconds)
+    }
+})
+ var execPopup = function(time) {
+     setTimeout(function() { showPopup(); }, time*1000);
+ }
+    </script>
+      <script src="https://cdn.consolechat.io/console-chat-min.js"></script>
+  </body>
+</html>
