@@ -229,16 +229,16 @@ pixtu_prediction.getPrediction().then().then(value => {
   console.log("Pixtu prediction ready:")
     console.log(value)     
     if (value.leaves > value.converts && value.leaves > value.clicks && value.timeInSeconds < 16) {
-      document.getElementById("description").innerHTML = "You will bounce without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. WHY DO YOU DO THIS TO US!!!!";
+      document.getElementById("description").innerHTML = "You will bounce without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page.";
       execPopup(value.timeInSeconds)
     } else if (value.leaves > value.converts && value.leaves > value.clicks) {
-      document.getElementById("description").innerHTML = "You might leave without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. PLEASE STAY!";
+      document.getElementById("description").innerHTML = "You might leave without subscribing after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page.";
       execPopup(value.timeInSeconds)
     } else if (value.clicks>value.converts){
-      document.getElementById("description").innerHTML = "You are likely to subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. GIVE THAT EMAIL NOW PLZZZ!"; 
+      document.getElementById("description").innerHTML = "You are likely to subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page."; 
       execPopup(value.timeInSeconds)
     } else {
-      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page. DO IT! DO IT! DO IT!!!";
+      document.getElementById("description").innerHTML = "You will subscribe after " + value.timeInSeconds.toFixed(0) + " seconds from entering this page.";
       execPopup(value.timeInSeconds)
     }
 })
