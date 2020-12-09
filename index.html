@@ -251,5 +251,14 @@ pixtu_prediction.getPrediction().then().then(value => {
   });
     </script>
       <script src="https://cdn.consolechat.io/console-chat-min.js"></script>
+      <script src="https://cdn.pointng.io/pointng-min.js"></script>
+<script>
+    const pointng = new PointNG({
+        api_key: "TEST_fb8cc2cd-187d-4835-a397-3cb83798d2e1"
+    });
+    pointng.getLocation().then(function(prediction) {
+        console.log(pointng.prediction)
+    })
+</script>
   </body>
 </html>
